@@ -8,10 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Competition extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'description'];
-
-    public function category()
-    {
-        
-    }
+    protected $fillable = ['name', 'description', 'year', 'group_link'];
 }
