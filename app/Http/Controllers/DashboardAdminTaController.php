@@ -112,10 +112,11 @@ class DashboardAdminTaController extends Controller
      * @param  \App\Models\TablighAkbar  $tablighAkbar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TablighAkbar $tablighAkbar)
+    public function destroy(Request $tablighAkbar)
     {
-        Storage::delete($tablighAkbar->foto);
-        TablighAkbar::destroy($tablighAkbar->id);
-        return redirect('/dashboard/tabligh-akbar')->with('success', 'Tabligh akbar has been deleted!');
+        // Storage::delete($tablighAkbar->foto);
+        // TablighAkbar::destroy($tablighAkbar->id);
+        TablighAkbar::where('id',$tablighAkbar->id)->update(['terlihat' => false]);
+        return redirect('/dashboard/tabligh-akbar')->with('success', 'Tabligh akbar has been hidden!');
     }
 }
