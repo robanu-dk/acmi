@@ -24,6 +24,7 @@ class CreateTablighAkbarsTable extends Migration
             $table->string('foto');
             $table->string('link_grup');
             $table->text('deskripsi')->nullable();
+            $table->boolean('terlihat')->default(true);
         });
     }
 

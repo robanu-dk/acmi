@@ -25,15 +25,11 @@ class ParticipantTaController extends Controller
      */
     public function create($id)
     {
-        if (auth()){
-            return view('tabligh-akbar.create', [
-                'judul'=>'Tabligh Akbar | ACMI 2022',
-                'ta' => TablighAkbar::find($id),
-                'user' => auth()->user()
-            ]);
-        } else{
-            return redirect('/login')->with('status', 'You need login first');
-        }
+        return view('tabligh-akbar.create', [
+            'judul'=>'Tabligh Akbar | ACMI 2022',
+            'ta' => TablighAkbar::find($id),
+            'user' => auth()->user()
+        ]);
     }
 
     /**

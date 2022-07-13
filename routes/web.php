@@ -37,6 +37,7 @@ Route::get('/', function () {
     ]);
 });
 /*menampilkan competition pada home*/
+
 Route::get('/competition', function () {
     return view('competition.index', [
         "judul" => "Competition | ACMI 2022",
@@ -51,7 +52,7 @@ Route::resource('/competition/registration', ParticipantController::class)->midd
 Route::get('/tabligh-akbar',[TablighAkbarController::class,'index']);
 
 /*entitas participant ta, user create dengan registrasi, admin bisa melihat dan menghapus*/
-Route::get('/tabligh-akbar/registration/{id}', [ParticipantTaController::class, 'create']);
+Route::get('/tabligh-akbar/registration/{id}', [ParticipantTaController::class, 'create'])->middleware('auth');
 Route::resource('/tabligh-akbar/registration', ParticipantTaController::class)->middleware('auth');
 
 Route::get('/qna',[QnAController::class,'index']);
@@ -84,7 +85,7 @@ Route::get('/dashboard/mycompetition', function () {
         'participants' => Participant::all(),
         'user' => auth()->user()
     ]);
-});
+})->middleware('auth');
 
 /*ini untuk dashboard peserta, melihat ta yg diikutinya*/
 Route::get('/dashboard/mytablighakbar', function () {
@@ -93,11 +94,14 @@ Route::get('/dashboard/mytablighakbar', function () {
         'participantTa' => ParticipantsTa::all(),
         'user' => auth()->user()
     ]);
-});
+})->middleware('auth');
 
 /*this three route is for crud competition, subcom, and ta*/
 Route::resource('/dashboard/competition', DashboardAdminCompetitionController::class)->middleware('admin');
 Route::resource('/dashboard/sub_competition', DashboardAdminSubCompetitionController::class)->middleware('admin');
+
+Route::put('/dashboard/tabligh-akbar/{id}', [DashboardAdminTaController::class, 'destroy'])->middleware('admin');
+Route::put('/dashboard/tabligh-akbar/{id}/edit', [DashboardAdminTaController::class, 'update'])->middleware('admin');
 Route::resource('/dashboard/tabligh-akbar', DashboardAdminTaController::class)->middleware('admin');
 
 /*untuk menampilkan dashboard partisipan dan memilih kompetisi, gelombang, ta mana yg mau dilihat*/

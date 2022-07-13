@@ -14,6 +14,8 @@
     </div>
 
     <div class='col-lg-6'>
+        <form method="get" action='/dashboard/profile/{{ $user->id }}/edit'>
+            @csrf
             <div class="mb-3">
                 <h6>Email</h6>
                 <p style="text-align: justify">{{ $user->email }}</p>
@@ -41,5 +43,7 @@
                 </p>
             </div>
             <a href="/dashboard/profile/{{ $user->id }}/edit" class="btn btn-primary mb-3">Edit</a>
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </form>
     </div>
 @endsection
