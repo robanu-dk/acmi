@@ -36,17 +36,21 @@ Route::get('/', function () {
         "judul" => "Home | ACMI 2022"
     ]);
 });
-
+/*menampilkan competition pada home*/
 Route::get('/competition', function () {
     return view('competition.index', [
         "judul" => "Competition | ACMI 2022",
         'competitions' => Competition::all()
     ]);
 });
+/*mendaftar lomba memerlukan login*/
 Route::get('/competition/registration/{id}', [ParticipantController::class, 'create'])->middleware('auth');
 Route::resource('/competition/registration', ParticipantController::class)->middleware('auth');
 
+/*menampilkan halaman ta pada home*/
 Route::get('/tabligh-akbar',[TablighAkbarController::class,'index']);
+
+/*entitas participant ta, user create dengan registrasi, admin bisa melihat dan menghapus*/
 Route::get('/tabligh-akbar/registration/{id}', [ParticipantTaController::class, 'create']);
 Route::resource('/tabligh-akbar/registration', ParticipantTaController::class)->middleware('auth');
 
@@ -60,6 +64,7 @@ Route::get('/about', function () {
 
 Route::get('/login',[LoginController::class,'index'])->name('login')->middleware('guest');
 Route::post('/login',[LoginController::class,'authenticate']);
+/*logout menggunakan post dengan merekam button yg ditekan*/
 Route::post('/logout',[LoginController::class,'logout']);
 
 Route::get('/register',[RegisterController::class,'index'])->middleware('guest');
@@ -70,6 +75,7 @@ Route::get('/dashboard', function()
     return view('dashboard-admin.index');
 })->middleware('auth');
 
+/*dashboard crud profile admin*/
 Route::resource('/dashboard/profile', DashboardAdminProfileController::class)->middleware('auth');
 
 Route::get('/dashboard/mycompetition', function () {
@@ -80,6 +86,7 @@ Route::get('/dashboard/mycompetition', function () {
     ]);
 });
 
+/*ini untuk dashboard peserta, melihat ta yg diikutinya*/
 Route::get('/dashboard/mytablighakbar', function () {
     return view('dashboard-admin.my-tabligh-akbar.index', [
         "judul" => "My Tabligh Akbar | ACMI 2022",
@@ -88,11 +95,12 @@ Route::get('/dashboard/mytablighakbar', function () {
     ]);
 });
 
+/*this three route is for crud competition, subcom, and ta*/
 Route::resource('/dashboard/competition', DashboardAdminCompetitionController::class)->middleware('admin');
 Route::resource('/dashboard/sub_competition', DashboardAdminSubCompetitionController::class)->middleware('admin');
-
 Route::resource('/dashboard/tabligh-akbar', DashboardAdminTaController::class)->middleware('admin');
 
+/*untuk menampilkan dashboard partisipan dan memilih kompetisi, gelombang, ta mana yg mau dilihat*/
 Route::get('/dashboard/participants', function()
 {
     return view('dashboard-admin.participants.index', [
@@ -112,6 +120,7 @@ Route::get('/dashboard/participants/gelombang/{id}', function($id)
     ]);
 })->middleware('admin');
 
+/*ini untuk menampilkan semua peserta di semua gelombang*/
 Route::get('/dashboard/participants/competition/{id}', function($id)
 {
     return view('dashboard-admin.participants.showall', [
@@ -121,6 +130,7 @@ Route::get('/dashboard/participants/competition/{id}', function($id)
     ]);
 })->middleware('admin');
 
+/*hanya menampilkan (read) partisipan TA, hanya bisa diakses admin*/
 Route::get('/dashboard/participants/tabligh-akbar/{id}', function($id)
 {
     return view('dashboard-admin.participants.showta', [
@@ -129,4 +139,5 @@ Route::get('/dashboard/participants/tabligh-akbar/{id}', function($id)
     ]);
 })->middleware('admin');
 
-Route::resource('/dashboard/qna', DashboardAdminQnaController::class)->middleware('admin');
+/*untuk admin mengedit jawaban*/
+Route::resource('/dashboard/qna', DashboardAdminQnaController::class)->middleware('auth');
