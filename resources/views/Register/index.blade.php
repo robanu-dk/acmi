@@ -112,30 +112,37 @@
                 </div>
             </div>
         </nav>
-        <main class="form-signin" style="width: 80%; margin:auto; padding-top:150px">
+        <main class="form-signin" style="width: 80%; margin:auto; padding-top:100px">
+            @if (session()->has('registerError'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert"
+                    style="width: 600px; margin:auto; margin-bottom: 30px">
+                    {{ session('registerError') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <form action="/register" method="post">
                 @csrf
                 <h1 class="h3 mb-3 fw-normal">Please Register</h1>
 
                 <div class="form-floating" style="width: 600px; margin:auto;">
                     <input type="text" name="name" class="form-control" id="name" placeholder="name"
-                    autofocus required value="{{ old('name') }}">
+                        required>
                     <label for="floatingPassword">Name</label>
                 </div>
                 <div class="form-floating" style="width: 600px; margin:auto;  margin-top:25px;">
-                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com"
-                        required>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com"
+                        autofocus required>
                     <label for="floatingInput">Email address</label>
-                    @error('email')
-                        <div class="invalid-feedback text-start">
-                            {{ $message }}
-                        </div>
-                    @enderror
                 </div>
                 <div class="form-floating" style="width: 600px; margin:auto;  margin-top:25px;">
                     <input type="password" name="password" class="form-control" id="password" placeholder="Password"
                         required>
                     <label for="floatingPassword">Password</label>
+                </div>
+                <div class="form-floating" style="width: 600px; margin:auto;  margin-top:25px;">
+                    <input type="password" name="password2" class="form-control" id="password2" placeholder="Password"
+                        required>
+                    <label for="floatingPassword">Retype Password</label>
                 </div>
                 <button type="submit" class="btn" style="background: #6C1FB6 !important; color: white;width: 150px; margin:auto; margin-top:25px;">Register</button>
             </form>
