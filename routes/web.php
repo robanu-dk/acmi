@@ -35,7 +35,7 @@ Route::get('/', function () {
     return view('Home', [
         "judul" => "Home | ACMI 2022"
     ]);
-});
+})->name('home');
 
 Route::get('/competition', function () {
     return view('competition.index', [
@@ -47,7 +47,7 @@ Route::get('/competition/registration/{id}', [ParticipantController::class, 'cre
 Route::resource('/competition/registration', ParticipantController::class)->middleware('auth');
 
 Route::get('/tabligh-akbar',[TablighAkbarController::class,'index']);
-Route::get('/tabligh-akbar/registration/{id}', [ParticipantTaController::class, 'create']);
+Route::get('/tabligh-akbar/registration/{id}', [ParticipantTaController::class, 'create'])->middleware('auth');
 Route::resource('/tabligh-akbar/registration', ParticipantTaController::class)->middleware('auth');
 
 Route::get('/qna',[QnAController::class,'index']);
@@ -78,7 +78,7 @@ Route::get('/dashboard/mycompetition', function () {
         'participants' => Participant::all(),
         'user' => auth()->user()
     ]);
-});
+})->middleware('auth');
 
 Route::get('/dashboard/mytablighakbar', function () {
     return view('dashboard-admin.my-tabligh-akbar.index', [
@@ -86,12 +86,14 @@ Route::get('/dashboard/mytablighakbar', function () {
         'participantTa' => ParticipantsTa::all(),
         'user' => auth()->user()
     ]);
-});
+})->middleware('auth');
 
 Route::resource('/dashboard/competition', DashboardAdminCompetitionController::class)->middleware('admin');
 Route::resource('/dashboard/sub_competition', DashboardAdminSubCompetitionController::class)->middleware('admin');
 
+Route::put('/dashboard/tabligh-akbar/{id}', [DashboardAdminTaController::class, 'destroy'])->middleware('admin');
 Route::resource('/dashboard/tabligh-akbar', DashboardAdminTaController::class)->middleware('admin');
+
 
 Route::get('/dashboard/participants', function()
 {
