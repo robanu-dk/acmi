@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class TablighAkbar extends Model
 {
     use HasFactory;
-    protected $fillable = ['judul', 'pemateri', 'open', 'close', 'waktu', 'foto', 'link_grup', 'deskripsi'];
+    protected $fillable = ['judul', 'pemateri', 'open', 'close', 'foto','terlihat'];
 }
