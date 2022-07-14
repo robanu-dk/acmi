@@ -18,7 +18,10 @@ class CreateParticipantsTasTable extends Migration
             $table->timestamps();
             $table->foreignId('tabligh_akbar_id');
             $table->foreignId('user_id');
+            $table->string('instansi');
             $table->boolean('absen')->default(False);
+            $table->text('pertanyaan')->nullable();
+            $table->text('evaluasi')->nullable();
         });
     }
 

@@ -18,7 +18,7 @@
 
     </div>
     <div class='col-lg-6'>
-        <form method="post" action='/dashboard/tabligh-akbar/{{ $ta->id }}' enctype="multipart/form-data">
+        <form method="post" action='/dashboard/tabligh-akbar/{{ $ta->id }}/edit' enctype="multipart/form-data">
             @method('put')
             @csrf
             <div class="mb-3">
@@ -36,7 +36,7 @@
                     <img src="{{ asset('storage/'.$ta->foto) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
                 @else
                     <img class="img-preview img-fluid mb-3 col-sm-5">
-                @endif 
+                @endif
                 <input class="form-control" type="file" id="foto" name="foto" onchange="previewImage()">
             </div>
             <div class="mb-3">
@@ -47,6 +47,18 @@
                 <h6>Close Registration</h6>
                 <input class="date form-control" type="date" name="close"  value="{{ $ta->close }}" required>
             </div>
+            <div class="mb-3">
+                <h6>Time</h6>
+                <input class="form-control" type="time" name="waktu" value="{{ $ta->waktu }}" required>
+            </div>
+            <div class="mb-3">
+                <h6>Group Link</h6>
+                <input class="form-control" type="string" name="link_grup" value="{{ $ta->link_grup }}" required>
+            </div>
+            <div class="mb-3">
+                <h6>Description</h6>
+                <textarea class="form-control" type="text" name="deskripsi" value="{{ $ta->deskripsi }}">{{ $ta->deskripsi }}</textarea>
+            </div>
             <button type="submit" class="btn btn-primary">Update</button>
 
         </form>
@@ -56,7 +68,7 @@
         function previewImage() {
             const foto = document.querySelector('#foto');
             const fotoPreview = document.querySelector('.img-preview');
-            
+
             fotoPreview.style.display = 'block';
 
             const oFReader = new FileReader();
@@ -65,6 +77,6 @@
             oFReader.onload = function(oFREvent) {
                 fotoPreview.src = oFREvent.target.result;
             }
-        } 
+        }
     </script>
 @endsection

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateTablighAkbarsTable extends Migration
 {
     /**
-     * Run the migrations.   
+     * Run the migrations.
      *
      * @return void
      */
@@ -20,7 +20,11 @@ class CreateTablighAkbarsTable extends Migration
             $table->string('pemateri');
             $table->date('open');
             $table->date('close');
+            $table->time('waktu');
             $table->string('foto');
+            $table->string('link_grup');
+            $table->text('deskripsi')->nullable();
+            $table->boolean('terlihat')->default(true);
         });
     }
 

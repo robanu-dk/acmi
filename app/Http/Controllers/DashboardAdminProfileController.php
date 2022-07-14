@@ -74,7 +74,9 @@ class DashboardAdminProfileController extends Controller
     public function update(Request $request, $id)
     {
         $new = $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'address' => 'required',
+            'wa' => 'required'
         ]);
 
         User::where('id', $id)->update($new);

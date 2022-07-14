@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ParticipantsTa extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'tabligh_akbar_id'];
+    protected $fillable = ['user_id', 'tabligh_akbar_id', 'instansi', 'absen', 'pertanyaan', 'evaluasi'];
 
     public function tablighAkbar()
     {

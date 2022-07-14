@@ -25,6 +25,14 @@
                 <label for="name" class="form-label"><h6>Name</h6></label>
                 <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" required>
             </div>
+            <div class="mb-3">
+                <label for="address" class="form-label"><h6>Address</h6></label>
+                <input type="text" class="form-control" id="address" name="address" value="{{ $user->address }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="wa" class="form-label"><h6>No WhatsApp</h6></label>
+                <input type="text" class="form-control" id="wa" name="wa" value="{{ $user->wa }}" required>
+            </div>
             <button type="submit" class="btn btn-primary">Save</button>
 
         </form>

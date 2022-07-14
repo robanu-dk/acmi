@@ -18,9 +18,11 @@ class CreateParticipantsTable extends Migration
             $table->timestamps();
             $table->foreignId('sub_competition_id');
             $table->foreignId('user_id');
-            $table->string('bukti_bayar');
+            $table->string('syarat');
             $table->string('univ');
-            $table->string('ktm');
+            $table->string('nim');
+            $table->boolean('verified')->default(False);
+            $table->string('submission')->nullable();
         });
     }
 
