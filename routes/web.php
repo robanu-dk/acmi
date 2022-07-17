@@ -56,6 +56,7 @@ Route::get('/tabligh-akbar/registration/{id}', [ParticipantTaController::class, 
 Route::resource('/tabligh-akbar/registration', ParticipantTaController::class)->middleware('auth');
 
 Route::get('/qna',[QnAController::class,'index']);
+Route::post('/qna',[QnAController::class,'store']);
 
 Route::get('/about', function () {
     return view('about', [
@@ -97,7 +98,9 @@ Route::get('/dashboard/mytablighakbar', function () {
 })->middleware('auth');
 
 /*this three route is for crud competition, subcom, and ta*/
+Route::put('/dashboard/competition/{id}', [DashboardAdminCompetitionController::class,'hide'])->middleware('admin');
 Route::resource('/dashboard/competition', DashboardAdminCompetitionController::class)->middleware('admin');
+Route::put('/dashboard/sub_competition/{id}', [DashboardAdminSubCompetitionController::class,'hide'])->middleware('admin');
 Route::resource('/dashboard/sub_competition', DashboardAdminSubCompetitionController::class)->middleware('admin');
 
 Route::put('/dashboard/tabligh-akbar/{id}', [DashboardAdminTaController::class, 'destroy'])->middleware('admin');

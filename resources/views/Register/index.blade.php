@@ -126,12 +126,12 @@
 
                 <div class="form-floating" style="width: 600px; margin:auto;">
                     <input type="text" name="name" class="form-control" id="name" placeholder="name"
-                        required>
+                        autofocus required>
                     <label for="floatingPassword">Name</label>
                 </div>
                 <div class="form-floating" style="width: 600px; margin:auto;  margin-top:25px;">
                     <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com"
-                        autofocus required>
+                        required>
                     <label for="floatingInput">Email address</label>
                 </div>
                 <div class="form-floating" style="width: 600px; margin:auto;  margin-top:25px;">

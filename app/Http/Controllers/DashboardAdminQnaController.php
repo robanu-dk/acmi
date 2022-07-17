@@ -35,15 +35,15 @@ class DashboardAdminQnaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $new = $request->validate([
-            'question' => 'required'
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $new = $request->validate([
+    //         'question' => 'required'
+    //     ]);
 
-        Qna::create($new);
-        return redirect('/qna')->with('success', 'Your question successfully submitted');
-    }
+    //     Qna::create($new);
+    //     return redirect('/qna')->with('success', 'Your question successfully submitted');
+    // }
 
     /**
      * Display the specified resource.
@@ -81,7 +81,7 @@ class DashboardAdminQnaController extends Controller
     public function update(Request $request, $id)
     {
         $new = $request->validate([
-            'answer' => ''
+            'answer' => 'required'
         ]);
 
         Qna::where('id', $id)->update($new);

@@ -12,15 +12,17 @@
 
             <div class="row" style="width:100%; margin:auto">
                 @foreach ($competitions as $competition)
-                    <div class="col-md-4">
-                        <div class="card" style="width: 100%; margin-top: 50px">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $competition->name }}</h5>
-                                <p class="card-text">{{ Str::limit($competition->description, 60, '...') }}</p>
-                                <a href="/competition/registration/{{ $competition->id }}" class="btn btn-primary mb-3" style="background: #6C1FB6 !important; color: white">Register now</a>
+                    @if($competition->visibility)
+                        <div class="col-md-4">
+                            <div class="card" style="width: 100%; margin-top: 50px">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $competition->name }}</h5>
+                                    <p class="card-text">{{ Str::limit($competition->description, 60, '...') }}</p>
+                                    <a href="/competition/registration/{{ $competition->id }}" class="btn btn-primary mb-3" style="background: #6C1FB6 !important; color: white">Register now</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>

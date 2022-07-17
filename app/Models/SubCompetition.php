@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SubCompetition extends Model
 {
     use HasFactory;
-    protected $fillable = ['competition_id', 'gelombang', 'open_registration', 'close_registration', 'open_submission', 'close_submission'];
+    protected $fillable = ['competition_id', 'gelombang', 'open_registration', 'close_registration', 'open_submission', 'close_submission', 'visibility'];
 
     public function competition()
     {

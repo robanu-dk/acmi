@@ -19,7 +19,9 @@
     <article class="m-2">
         <h4 style="color: #6C1FB6">{{ $competition->name }}</h4>
         <br>
-        <h6>Jumlah Peserta : 20</h6>
+        <h6>Jumlah Peserta : {{ $total }}</h6>
+        <br>
+        <h6>Link Grup : {{ $competition->group_link }}</h6>
         <br>
         <h6>Description :</h6>
         <p style="text-align: justify">{{ $competition->description }}</p>

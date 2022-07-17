@@ -23,15 +23,25 @@ class QnAController extends Controller
     public function store(Request $request)
     {
         $new = $request->validate([
-            'competition_id' => 'required',
-            'gelombang' => 'required',
-            'open_registration' => 'required',
-            'close_registration' => 'required',
-            'open_submission' => 'required',
-            'close_submission' => 'required'
+            'question' => 'required'
         ]);
 
-        SubCompetition::create($new);
-        return redirect('/dashboard/competition')->with('status', 'New competition successfully created');
+        Qna::create($new);
+        return redirect('/qna')->with('success', 'Your question successfully submitted');
     }
+
+    // public function store(Request $request)
+    // {
+        // $new = $request->validate([
+        //     'competition_id' => 'required',
+        //     'gelombang' => 'required',
+        //     'open_registration' => 'required',
+        //     'close_registration' => 'required',
+        //     'open_submission' => 'required',
+        //     'close_submission' => 'required'
+        // ]);
+
+        // SubCompetition::create($new);
+        // return redirect('/dashboard/competition')->with('status', 'New competition successfully created');
+    // }
 }

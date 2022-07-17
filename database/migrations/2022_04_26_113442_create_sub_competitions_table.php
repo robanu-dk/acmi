@@ -22,6 +22,7 @@ class CreateSubCompetitionsTable extends Migration
             $table->date('close_registration');
             $table->date('open_submission');
             $table->date('close_submission');
+            $table->boolean('visibility')->default(true);
         });
     }
 
