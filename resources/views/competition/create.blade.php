@@ -25,18 +25,24 @@
                         <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" required>
                     </div>
                     <div class="mb-3">
+                        <h6>No WhatsApp</h6>
+                        <input type="text" class="form-control" id="wa" name="wa" required>
+                    </div>
+                    <div class="mb-3">
+                        <h6>Alamat</h6>
+                        <input type="text" class="form-control" id="address" name="address" required>
+                    </div>
+                    <div class="mb-3">
                         <h6>Asal Universitas</h6>
                         <input type="text" class="form-control" id="univ" name="univ" required>
                     </div>
                     <div class="mb-3">
-                        <label for="ktm" class="form-label"><h6>Kartu Tanda Mahasiswa</h6></label>
-                        <img class="img-preview img-fluid mb-3 col-sm-5">
-                        <input class="form-control" type="file" id="ktm" name="ktm" onchange="previewImage()" required>
+                        <h6>NIM</h6>
+                        <input type="text" class="form-control" id="nim" name="nim" required>
                     </div>
                     <div class="mb-3">
-                        <label for="bukti_bayar" class="form-label"><h6>Bukti Pembayaran</h6></label>
-                        <img class="img-preview img-fluid mb-3 col-sm-5">
-                        <input class="form-control" type="file" id="bukti_bayar" name="bukti_bayar" onchange="previewImage()" required>
+                        <h6>Link Drive Persyaratan</h6>
+                        <input type="text" class="form-control" id="syarat" name="syarat" required>
                     </div>
                     <input type="hidden" id="user_id" name="user_id" value="{{ $user->id }}">
                     <input type="hidden" id="sub_competition_id" name="sub_competition_id" value="{{ $subCompetition->id }}">
