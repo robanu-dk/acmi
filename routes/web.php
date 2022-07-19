@@ -12,6 +12,7 @@ use App\Http\Controllers\DashboardAdminSubCompetitionController;
 use App\Http\Controllers\DashboardAdminTaController;
 use App\Http\Controllers\DashboardAdminQnaController;
 use App\Http\Controllers\DashboardAdminProfileController;
+use App\Http\Controllers\MyCompetitionController;
 use App\Models\Competition;
 use App\Models\SubCompetition;
 use App\Models\TablighAkbar;
@@ -56,6 +57,7 @@ Route::get('/tabligh-akbar/registration/{id}', [ParticipantTaController::class, 
 Route::resource('/tabligh-akbar/registration', ParticipantTaController::class)->middleware('auth');
 
 Route::get('/qna',[QnAController::class,'index']);
+Route::post('/qna',[QnAController::class,'store']);
 
 Route::get('/about', function () {
     return view('about', [
@@ -79,13 +81,8 @@ Route::get('/dashboard', function()
 /*dashboard crud profile admin*/
 Route::resource('/dashboard/profile', DashboardAdminProfileController::class)->middleware('auth');
 
-Route::get('/dashboard/mycompetition', function () {
-    return view('dashboard-admin.my-competition.index', [
-        "judul" => "My Competition | ACMI 2022",
-        'participants' => Participant::all(),
-        'user' => auth()->user()
-    ]);
-})->middleware('auth');
+Route::put('/dashboard/mycompetition/{id}',[MyCompetitionController::class,'submission'])->middleware('auth');
+Route::get('/dashboard/mycompetition',[MyCompetitionController::class,'index'])->middleware('auth');
 
 /*ini untuk dashboard peserta, melihat ta yg diikutinya*/
 Route::get('/dashboard/mytablighakbar', function () {
@@ -97,7 +94,10 @@ Route::get('/dashboard/mytablighakbar', function () {
 })->middleware('auth');
 
 /*this three route is for crud competition, subcom, and ta*/
+
+Route::put('/dashboard/competition/{id}', [DashboardAdminCompetitionController::class,'hide'])->middleware('admin');
 Route::resource('/dashboard/competition', DashboardAdminCompetitionController::class)->middleware('admin');
+Route::put('/dashboard/sub_competition/{id}', [DashboardAdminSubCompetitionController::class,'hide'])->middleware('admin');
 Route::resource('/dashboard/sub_competition', DashboardAdminSubCompetitionController::class)->middleware('admin');
 
 Route::put('/dashboard/tabligh-akbar/{id}', [DashboardAdminTaController::class, 'destroy'])->middleware('admin');
@@ -144,4 +144,4 @@ Route::get('/dashboard/participants/tabligh-akbar/{id}', function($id)
 })->middleware('admin');
 
 /*untuk admin mengedit jawaban*/
-Route::resource('/dashboard/qna', DashboardAdminQnaController::class)->middleware('auth');
+Route::resource('/dashboard/qna', DashboardAdminQnaController::class)->middleware('admin');

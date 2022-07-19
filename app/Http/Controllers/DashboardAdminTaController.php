@@ -45,13 +45,16 @@ class DashboardAdminTaController extends Controller
             'pemateri' => 'required',
             'open' => 'required',
             'close' => 'required',
-            'foto' => 'image'
+            'foto' => 'image',
+            'waktu' => 'required',
+            'link_grup' => 'required',
+            'deskripsi' => 'nullable'
         ]);
 
         $new['foto'] = $request->file('foto')->store('foto-pemateri');
 
         TablighAkbar::create($new);
-        return redirect('/dashboard/tabligh-akbar')->with('status', 'New tabligh akbar successfully created');
+        return redirect('/dashboard/tabligh-akbar')->with('success', 'New tabligh akbar successfully created');
     }
 
     /**
@@ -94,7 +97,10 @@ class DashboardAdminTaController extends Controller
             'pemateri' => 'required',
             'open' => 'required',
             'close' => 'required',
-            'foto' => 'image'
+            'foto' => 'image',
+            'waktu' => 'required',
+            'link_grup' => 'required',
+            'deskripsi' => 'nullable'
         ]);
 
         if($request->file('foto')) {
@@ -103,7 +109,7 @@ class DashboardAdminTaController extends Controller
         }
 
         TablighAkbar::where('id', $id)->update($new);
-        return redirect('/dashboard/tabligh-akbar')->with('status', 'New competition successfully updated');
+        return redirect('/dashboard/tabligh-akbar')->with('success', 'New competition successfully updated');
     }
 
     /**

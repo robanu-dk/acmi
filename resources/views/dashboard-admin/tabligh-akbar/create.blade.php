@@ -15,16 +15,16 @@
             </tr>
         </table>
     </div>
-    <div class='col-lg-6'>
+    <div class='col-lg-6 mb-5'>
         <form method="post" action='/dashboard/tabligh-akbar' enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <h6>Judul Tabligh Akbar</h6>
-                <input type="text" class="form-control" id="judul" name="judul">
+                <input type="text" class="form-control" id="judul" name="judul" required>
             </div>
             <div class="mb-3">
                 <h6>Nama Pemateri</h6>
-                <input type="text" class="form-control" id="pemateri" name="pemateri">
+                <input type="text" class="form-control" id="pemateri" name="pemateri" required>
             </div>
             <div class="mb-3">
                 <label for="foto" class="form-label"><h6>Foto Pemateri</h6></label>
@@ -33,11 +33,23 @@
               </div>
             <div class="mb-3">
                 <h6>Open Registration</h6>
-                <input class="date form-control" type="date" name="open">
+                <input class="date form-control" type="date" name="open" required>
             </div>
             <div class="mb-3">
                 <h6>Close Registration</h6>
-                <input class="date form-control" type="date" name="close">
+                <input class="date form-control" type="date" name="close" required>
+            </div>
+            <div class="mb-3">
+                <h6>Time</h6>
+                <input class="form-control" type="time" name="waktu" required>
+            </div>
+            <div class="mb-3">
+                <h6>Group Link</h6>
+                <input class="form-control" type="string" name="link_grup" required>
+            </div>
+            <div class="mb-3">
+                <h6>Description</h6>
+                <textarea class="form-control" type="text" name="deskripsi"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Add Tabligh Akbar</button>
 
@@ -48,7 +60,7 @@
         function previewImage() {
             const foto = document.querySelector('#foto');
             const fotoPreview = document.querySelector('.img-preview');
-            
+
             fotoPreview.style.display = 'block';
 
             const oFReader = new FileReader();
@@ -57,6 +69,6 @@
             oFReader.onload = function(oFREvent) {
                 fotoPreview.src = oFREvent.target.result;
             }
-        } 
+        }
     </script>
 @endsection

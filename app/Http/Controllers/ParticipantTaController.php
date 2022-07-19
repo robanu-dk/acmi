@@ -42,6 +42,7 @@ class ParticipantTaController extends Controller
     {
         $new = $request->validate([
             'tabligh_akbar_id' => 'required',
+            'instansi'=>'required',
             'user_id' => 'required'
         ]);
 

@@ -19,7 +19,7 @@
     <article class="m-2">
         <h4 style="color: #6C1FB6">{{ $subCompetition->competition->name.' Gelombang ' . $subCompetition->gelombang }}</h4>
         <br>
-        <h6>Jumlah Peserta : 20</h6>
+        <h6>Jumlah Peserta : {{ $participants->count() }}</h6>
         <br>
         <h6>{{ 'Open registration  :' . $subCompetition->open_registration }}</h6>
         <h6>{{ 'Close registration :' . $subCompetition->close_registration }}</h6>

@@ -45,7 +45,7 @@
                         <input type="text" class="form-control" id="syarat" name="syarat" required>
                     </div>
                     <input type="hidden" id="user_id" name="user_id" value="{{ $user->id }}">
-                    <input type="hidden" id="sub_competition_id" name="sub_competition_id" value="{{ $subCompetition->id }}">
+                    {{-- <input type="hidden" id="sub_competition_id" name="sub_competition_id" value="{{ $subCompetition->id }}"> --}}
                     <button type="submit" class="btn btn-primary">Regist Now</button>
                 </form>
             </div>
@@ -55,7 +55,7 @@
         function previewImage() {
             const foto = document.querySelector('#foto');
             const fotoPreview = document.querySelector('.img-preview');
-            
+
             fotoPreview.style.display = 'block';
 
             const oFReader = new FileReader();
@@ -64,6 +64,6 @@
             oFReader.onload = function(oFREvent) {
                 fotoPreview.src = oFREvent.target.result;
             }
-        } 
+        }
     </script>
 @endsection

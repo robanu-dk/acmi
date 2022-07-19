@@ -8,7 +8,7 @@
         <button type="button" class="btn" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
- 
+
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Profile</h1>
     </div>
@@ -30,8 +30,13 @@
                 <input type="text" class="form-control" id="address" name="address" value="{{ $user->address }}" required>
             </div>
             <div class="mb-3">
-                <label for="wa" class="form-label"><h6>No WhatsApp</h6></label>
+                <label for="wa" class="form-label @error('wa') is-invalid @enderror"><h6>No WhatsApp</h6></label>
                 <input type="text" class="form-control" id="wa" name="wa" value="{{ $user->wa }}" required>
+                @error('wa')
+                    <div class="invalid-feedback">
+                        {{ str_replace('wa','No WhatsApp',$message) }}
+                    </div>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">Save</button>
 

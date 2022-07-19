@@ -14,6 +14,7 @@
                         <p class="card-text">{{ $p->tablighAkbar->pemateri }}</p>
                         <p class="card-text">{{ $p->tablighAkbar->close }}</p>
                         <a href="#" class="btn" style="background: #6C1FB6 !important; color: white">See details</a>
+                        <a href="{{ $p->tablighAkbar->link_grup }}" class="btn btn-success" target="_blank">Join Whatsapp Group</a>
                     </div>
                 </div>
             </div>

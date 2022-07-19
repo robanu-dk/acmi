@@ -22,8 +22,16 @@
             @method('put')
             @csrf
             <div class="mb-3">
-                <label for="name" class="form-label"><h6>Nama Lomba</h6></label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ $competition->name }}" required>
+                <h6>Name</h6>
+                <input class="form-control" type="string" name="name" value="{{ $competition->name }}" required>
+            </div>
+            <div class="mb-3">
+                <h6>Year</h6>
+                <input class="form-control" type="string" name="year" value="{{ $competition->year }}" required>
+            </div>
+            <div class="mb-3">
+                <h6>Group Link</h6>
+                <input class="form-control" type="string" name="group_link" value="{{ $competition->group_link }}" required>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label"><h6>Description</h6></label>

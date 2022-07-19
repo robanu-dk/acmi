@@ -19,6 +19,7 @@ class CreateCompetitionsTable extends Migration
             $table->text('description');
             $table->text('year');
             $table->text('group_link');
+            $table->boolean('visibility')->default(true);
             $table->timestamps();
         });
     }

@@ -3,18 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\SubCompetition;
+use App\Models\Competition;
+use App\Models\Participant;
 use Illuminate\Http\Request;
 
 class DashboardAdminSubCompetitionController extends Controller
 {
     public function index()
     {
-        
+
     }
 
     public function create()
     {
-        return view('dashboard-admin.competition.create');
+        return view('dashboard-admin.competition.create',[
+            'competitions'=>Competition::all()
+        ]);
     }
 
     public function store(Request $request)
@@ -29,13 +33,14 @@ class DashboardAdminSubCompetitionController extends Controller
         ]);
 
         SubCompetition::create($new);
-        return redirect('/dashboard/competition')->with('status', 'New competition successfully created');
+        return redirect('/dashboard/competition')->with('success', 'New competition successfully created');
     }
 
     public function show($id)
     {
         return view('dashboard-admin.competition.show', [
-            'subCompetition' => SubCompetition::find($id)
+            'subCompetition' => SubCompetition::find($id),
+            'participants' => Participant::where('sub_competition_id',$id)->get()
         ]);
     }
 
@@ -58,13 +63,12 @@ class DashboardAdminSubCompetitionController extends Controller
         ]);
 
         SubCompetition::where('id', $id)->update($new);
-        return redirect('/dashboard/competition')->with('status', 'Gelombang successfully updated');
+        return redirect('/dashboard/competition')->with('success', 'Gelombang successfully updated');
     }
 
-    public function destroy($id)
+    public function hide($id)
     {
-        $sc = SubCompetition::find($id);
-        $sc->delete();
-        return redirect('/dashboard/competition')->with('status', 'Competition has been deleted!');
+        SubCompetition::where('id',$id)->update(['visibility'=>false]);
+        return redirect('/dashboard/competition')->with('success', 'Competition has been hidden!');
     }
 }
