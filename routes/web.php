@@ -12,6 +12,7 @@ use App\Http\Controllers\DashboardAdminSubCompetitionController;
 use App\Http\Controllers\DashboardAdminTaController;
 use App\Http\Controllers\DashboardAdminQnaController;
 use App\Http\Controllers\DashboardAdminProfileController;
+use App\Http\Controllers\MyCompetitionController;
 use App\Models\Competition;
 use App\Models\SubCompetition;
 use App\Models\TablighAkbar;
@@ -80,13 +81,8 @@ Route::get('/dashboard', function()
 /*dashboard crud profile admin*/
 Route::resource('/dashboard/profile', DashboardAdminProfileController::class)->middleware('auth');
 
-Route::get('/dashboard/mycompetition', function () {
-    return view('dashboard-admin.my-competition.index', [
-        "judul" => "My Competition | ACMI 2022",
-        'participants' => Participant::all(),
-        'user' => auth()->user()
-    ]);
-})->middleware('auth');
+Route::put('/dashboard/mycompetition/{id}',[MyCompetitionController::class,'submission'])->middleware('auth');
+Route::get('/dashboard/mycompetition',[MyCompetitionController::class,'index'])->middleware('auth');
 
 /*ini untuk dashboard peserta, melihat ta yg diikutinya*/
 Route::get('/dashboard/mytablighakbar', function () {

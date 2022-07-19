@@ -11,7 +11,7 @@ class DashboardAdminProfileController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */ 
+     */
     public function index()
     {
         return view('dashboard-admin.profile.index', [
@@ -76,7 +76,7 @@ class DashboardAdminProfileController extends Controller
         $new = $request->validate([
             'name' => 'required',
             'address' => 'required',
-            'wa' => 'required'
+            'wa' => 'required|min:9|max:14'
         ]);
 
         User::where('id', $id)->update($new);
