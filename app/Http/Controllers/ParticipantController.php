@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Participant;
 use App\Models\SubCompetition;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ParticipantController extends Controller
@@ -25,11 +26,19 @@ class ParticipantController extends Controller
      */
     public function create($id)
     {
-            return view('competition.create', [
-                "judul" => "Competition | ACMI 2022",
-                'subCompetition' => SubCompetition::find($id),
-                'user' => auth()->user()
-            ]);
+        foreach (SubCompetition::all() as $subc) {
+            if ($subc->competition->id == $id && $subc->visibility == true && $subc->open_registration <= date('Y-m-d') && $subc->close_registration >= date('Y-m-d')) {
+                    return view('competition.create', [
+                    "judul" => "Competition | ACMI 2022",
+                    'user' => auth()->user(),
+                    'subCompetition' => $subc
+                ]);
+            } else {
+                return view('competition.close', [
+                    "judul" => "Competition | ACMI 2022"
+                ]);
+            }
+        }    
     }
 
     /**  
@@ -40,15 +49,22 @@ class ParticipantController extends Controller
      */
     public function store(Request $request)
     {
-        $new = $request->validate([
+        $participant = $request->validate([
             'user_id' => 'required',
             'sub_competition_id' => 'required',
             'univ' => 'required',
-            'bukti_bayar' => 'required',
-            'ktm' => 'required'
+            'nim' => 'required',
+            'syarat' => 'required',
         ]);
 
-        Participant::create($new);
+        $user = $request->validate([
+            'name' => 'required',
+            'wa' => 'required',
+            'address' => 'required'
+        ]);
+
+        Participant::create($participant);
+        User::where('id', $request['user_id'])->update($user);
         return view('competition.registered', [
             "judul" => "Competition | ACMI 2022"
         ]);
