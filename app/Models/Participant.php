@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Participant extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'sub_competition_id', 'univ', 'nim', 'syarat', 'verified', 'submission'];
+    // protected $fillable = ['user_id', 'sub_competition_id', 'univ', 'nim', 'syarat', 'verified', 'submission'];
+    protected $guarded = ['id'];
 
     public function subCompetition()
     {

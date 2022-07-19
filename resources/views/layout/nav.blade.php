@@ -55,7 +55,7 @@
         </ul>
       </div>
 
-      
+
       <div class="navbar-nav">
         <div class="nav-brand text-nowrap">
           @auth
@@ -79,6 +79,6 @@
           @endauth
         </div>
       </div>
-      
+
     </div>
   </nav>

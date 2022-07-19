@@ -1,13 +1,13 @@
+@extends('dashboard-admin.layouts.main')
+
+@section('container')
+
 <style>
     .title {
         font-weight: 500;
         font-size: 30px;
     }
 </style>
-
-@extends('dashboard-admin.layouts.main')
-
-@section('container')
 
 @if(session()->has('success'))
     <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
@@ -27,12 +27,17 @@
             <div class="title">Competition</div>
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Year</th>
-                    <th scope="col">Group Link</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Status</th>
+                    <th scope="col" style="width: 1%">#</th>
+                    <th scope="col" style="width: 7%">Name</th>
+                    <th scope="col" style="width: 4%">Year</th>
+                    <th scope="col" style="width: 8%">Group Link</th>
+                    <th scope="col" style="width: 8%">Subtema 1</th>
+                    <th scope="col" style="width: 8%">Subtema 2</th>
+                    <th scope="col" style="width: 8%">Subtema 3</th>
+                    <th scope="col" style="width: 8%">Subtema 4</th>
+                    <th scope="col" style="width: 8%">Subtema 5</th>
+                    <th scope="col" style="width: 10%">Description</th>
+                    <th scope="col" style="width: %">Status</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -43,6 +48,11 @@
                         <td>{{ $competition->name }}</td>
                         <td>{{ $competition->year }}</td>
                         <td>{{ $competition->group_link }}</td>
+                        <td>{{ $competition->subtema1 }}</td>
+                        <td>{{ $competition->subtema2 }}</td>
+                        <td>{{ $competition->subtema3 }}</td>
+                        <td>{{ $competition->subtema4 }}</td>
+                        <td>{{ $competition->subtema5 }}</td>
                         <td>{{ Str::limit($competition->description, 100, '...') }}</td>
                         <td>{{ ($competition->visibility)?'active':'hidden' }}</td>
                         <td>

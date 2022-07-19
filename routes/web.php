@@ -42,7 +42,9 @@ Route::get('/', function () {
 Route::get('/competition', function () {
     return view('competition.index', [
         "judul" => "Competition | ACMI 2022",
-        'competitions' => Competition::all()
+        'competitions' => Competition::where('visibility',true)->get(),
+        'participants' => Participant::where('user_id',auth()->user()->id)->get(),
+        'subCompetitions' => SubCompetition::all()
     ]);
 });
 /*mendaftar lomba memerlukan login*/

@@ -4,7 +4,6 @@
 <div class="container" style="width:80% ; margin: auto;">
   <div style="padding-top: 100px ; width:100%; margin:auto">
     <h1 class="border-bottom" style="text-align: center; font-family: 'Inter', sans-serif;font-weight: 600; font-size:40px; color: #313131 ; padding-bottom:10px;">Join the Event!</h1>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <div class="row" style="width:100%; margin:auto">
       @foreach($tablighAkbars as $ta)

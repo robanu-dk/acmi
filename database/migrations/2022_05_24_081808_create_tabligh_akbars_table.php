@@ -20,7 +20,7 @@ class CreateTablighAkbarsTable extends Migration
             $table->string('pemateri');
             $table->date('open');
             $table->date('close');
-            $table->time('waktu');
+            $table->dateTime('pelaksanaan');
             $table->string('foto');
             $table->string('link_grup');
             $table->text('deskripsi')->nullable();

@@ -40,14 +40,17 @@ class DashboardAdminCompetitionController extends Controller
      */
     public function store(Request $request)
     {
-        $new = $request->validate([
+        $request->validate([
             'name'=>'required',
             'year'=>'required|size:4',
             'group_link'=>'required',
-            'description'=>'required'
+            'description'=>'required',
+            'tim'=>'required'
         ]);
 
-        Competition::create($new);
+        $data= $request->only(['name','year','group_link','subtema1','subtema2','subtema3','subtema4','subtema5','description','tim']);
+
+        Competition::create($data);
         return redirect('/dashboard/competition')->with('success', 'Competition successfully created!!');
     }
 

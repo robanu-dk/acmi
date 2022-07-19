@@ -19,6 +19,12 @@ class CreateCompetitionsTable extends Migration
             $table->text('description');
             $table->text('year');
             $table->text('group_link');
+            $table->text('subtema1')->nullable();
+            $table->text('subtema2')->nullable();
+            $table->text('subtema3')->nullable();
+            $table->text('subtema4')->nullable();
+            $table->text('subtema5')->nullable();
+            $table->boolean('tim');
             $table->boolean('visibility')->default(true);
             $table->timestamps();
         });
