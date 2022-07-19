@@ -32,7 +32,7 @@ class MyCompetitionController extends Controller
     {
         $validated = $request->validate(['submission'=>'required']);
 
-        Participant::where('user_id',$id)->update(['submission'=>$request->submission]);
+        Participant::where('id',$id)->update(['submission'=>$request->submission]);
 
         return redirect('/dashboard/mycompetition')->with('success','Your Submission Successfull');
 

@@ -38,7 +38,7 @@
                         </button>
                         <div class="collapse" id="submission">
                             <div class="card card-body">
-                                <form action="/dashboard/mycompetition/{{ $participant->user_id }}" method="POST">
+                                <form action="/dashboard/mycompetition/{{ $participant->id }}" method="POST">
                                     @csrf
                                     @method('put')
                                     <div class="form-floating mb-3">
