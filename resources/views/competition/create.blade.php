@@ -43,7 +43,7 @@
                     </div>
                     <div class="mb-3">
                         <h6>Nama Anggota 1<span class="text-muted small">(boleh dikosongi)</span></h6>
-                        <input type="text" class="form-control" id="name_anggota1" name="name_anggota1">
+                        <input type="text" class="form-control" id="nama_anggota1" name="nama_anggota1">
                     </div>
                     <div class="mb-3">
                         <h6>Asal Universitas Anggota 1<span class="text-muted small">(boleh dikosongi)</span></h6>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="mb-3">
                         <h6>Nama Anggota 2<span class="text-muted small">(boleh dikosongi)</span></h6>
-                        <input type="text" class="form-control" id="name_anggota2" name="name_anggota2" value="{{ old('name_anggota2') }}">
+                        <input type="text" class="form-control" id="nama_anggota2" name="nama_anggota2">
                     </div>
                     <div class="mb-3">
                         <h6>Asal Universitas Anggota 2<span class="text-muted small">(boleh dikosongi)</span></h6>

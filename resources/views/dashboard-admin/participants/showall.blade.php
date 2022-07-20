@@ -19,24 +19,30 @@
     <table class="table table-striped table-sm">
         <thead>
             <tr>
+                @if ($competition->tim)
+                <th scope="col">Nama Ketua</th>
+                <th scope="col">NIM Ketua</th>
+                <th scope="col">Universitas Ketua</th>
+                @else
                 <th scope="col">Nama</th>
+                <th scope="col">NIM</th>
                 <th scope="col">Universitas</th>
-                <th scope="col">KTM</th>
-                <th scope="col">Bukti Bayar</th>
-                <th scope="col">Action</th>
+                @endif
+                <th scope="col">Nomor WhatsAppp</th>
+                <th scope="col">Tanggal Submit</th>
+                <th scope="col">Submission</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($participants as $p)
             @if($p->subCompetition->Competition->id == $competition->id)
                 <tr>
-                    <td>{{ $p->User->name }}</td>
-                    <td>{{ $p->univ }}</td>
-                    <td><a href="{{ $p->ktm }}">open</a></td>
-                    <td><a href="{{ $p->bukti_bayar }}">open</a></td>
-                    <td>
-                        <a href="#">Verify</a>
-                    </td>
+                    <td>{{ $p->nama_ketua }}</td>
+                    <td>{{ $p->nim_ketua }}</td>
+                    <td>{{ $p->univ_ketua }}</td>
+                    <td>{{ $p->User->wa }}</td>
+                    <td>{{ $p->created_at }}</td>
+                    <td><a class="btn btn-primary" href="{{ $p->submission }}" target="_blank">View Submission</a></td>
                 </tr>
             @endif
             @endforeach

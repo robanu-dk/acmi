@@ -81,7 +81,7 @@ Route::get('/dashboard', function()
 })->middleware('auth');
 
 /*dashboard crud profile admin*/
-Route::resource('/dashboard/profile', DashboardAdminProfileController::class)->middleware('auth');
+Route::resource('/dashboard/profile', DashboardAdminProfileController::class)->middleware('auth','admin');
 
 Route::put('/dashboard/mycompetition/{id}',[MyCompetitionController::class,'submission'])->middleware('auth');
 Route::get('/dashboard/mycompetition',[MyCompetitionController::class,'index'])->middleware('auth');
@@ -119,10 +119,20 @@ Route::get('/dashboard/participants', function()
 
 Route::get('/dashboard/participants/gelombang/{id}', function($id)
 {
+    $sub_competition = SubCompetition::find($id);
     return view('dashboard-admin.participants.showgelombang', [
+        'competition' => Competition::find($sub_competition->competition_id),
         'subCompetition' => SubCompetition::find($id),
         'participants' => Participant::all()
     ]);
+})->name('participant_table')->middleware('admin');
+
+// Verif participant
+Route::put('/dashboard/participants/gelombang/{id}/verif/{participant_id}', function($id,$participant_id)
+{
+    Participant::where('id',$participant_id)->update(['verified'=>true]);
+    return redirect()->route('participant_table',[$id]);
+
 })->middleware('admin');
 
 /*ini untuk menampilkan semua peserta di semua gelombang*/

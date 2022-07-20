@@ -46,7 +46,7 @@ class DashboardAdminTaController extends Controller
             'open' => 'required',
             'close' => 'required',
             'foto' => 'image',
-            'waktu' => 'required',
+            'pelaksanaan' => 'required',
             'link_grup' => 'required',
             'deskripsi' => 'nullable'
         ]);
@@ -98,7 +98,7 @@ class DashboardAdminTaController extends Controller
             'open' => 'required',
             'close' => 'required',
             'foto' => 'image',
-            'waktu' => 'required',
+            'pelaksanaan' => 'required',
             'link_grup' => 'required',
             'deskripsi' => 'nullable'
         ]);

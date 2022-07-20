@@ -41,7 +41,7 @@
             </div>
             <div class="mb-3">
                 <h6>Time</h6>
-                <input class="form-control" type="time" name="waktu" required>
+                <input class="form-control" type="time" name="pelaksanaan" required>
             </div>
             <div class="mb-3">
                 <h6>Group Link</h6>
