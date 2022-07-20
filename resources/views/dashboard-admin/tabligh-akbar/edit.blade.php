@@ -30,7 +30,7 @@
                 <input type="text" class="form-control" id="pemateri" name="pemateri" value="{{ $ta->pemateri }}" required>
             </div>
             <div class="mb-3">
-                <label for="foto" class="form-label"><h6>Foto Pemateri</h6></label>
+                <label for="foto" class="form-label"><h6>Poster</h6></label>
                 <input type="hidden" name="oldFoto" value="{{ $ta->foto }}">
                 @if($ta->foto)
                     <img src="{{ asset('storage/'.$ta->foto) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
@@ -46,6 +46,10 @@
             <div class="mb-3">
                 <h6>Close Registration</h6>
                 <input class="date form-control" type="date" name="close"  value="{{ $ta->close }}" required>
+            </div>
+            <div class="mb-3">
+                <h6>Event Held</h6>
+                <input class="date form-control" type="date" name="pelaksanaan"  value="{{ $ta->pelaksanaan }}" required>
             </div>
             <div class="mb-3">
                 <h6>Time</h6>

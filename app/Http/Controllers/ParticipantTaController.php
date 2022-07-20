@@ -41,12 +41,32 @@ class ParticipantTaController extends Controller
     public function store(Request $request)
     {
         $new = $request->validate([
+            'email' => 'required|unique:participants_tas',
             'tabligh_akbar_id' => 'required',
-            'instansi'=>'required',
-            'user_id' => 'required'
+            'instansi' => 'required',
+            'user_id' => 'required',
+            'nama' => 'required',
         ]);
 
-        ParticipantsTa::create($new);
+        if($request['instansi'] == 'Universitas Airlangga')
+        {
+            $new = $request->validate([
+                'prodi' => 'required',
+                'fakultas'=>'required',
+                'nim' => 'required',
+                'angkatan' => 'required|size:4'
+            ]);
+        }else {
+            $new = $request->validate(['instansi_lain'=>'required']);
+            $request['instansi'] = $request['instansi_lain'];
+        }
+
+        $data = $request->only([
+            'tabligh_akbar_id','user_id','email','nama','instansi',
+            'prodi','fakultas','nim','angkatan','pertanyaan'
+            ]);
+
+        ParticipantsTa::create($data);
         return view('tabligh-akbar.registered', [
             "judul" => "Tabligh Akbar | ACMI 2022"
         ]);

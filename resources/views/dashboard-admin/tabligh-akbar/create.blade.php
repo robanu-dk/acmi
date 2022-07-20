@@ -27,7 +27,7 @@
                 <input type="text" class="form-control" id="pemateri" name="pemateri" required>
             </div>
             <div class="mb-3">
-                <label for="foto" class="form-label"><h6>Foto Pemateri</h6></label>
+                <label for="foto" class="form-label"><h6>Poster</h6></label>
                 <img class="img-preview img-fluid mb-3 col-sm-5">
                 <input class="form-control" type="file" id="foto" name="foto" onchange="previewImage()">
               </div>
@@ -40,8 +40,12 @@
                 <input class="date form-control" type="date" name="close" required>
             </div>
             <div class="mb-3">
+                <h6>Event Held</h6>
+                <input class="date form-control" type="date" name="pelaksanaan" required>
+            </div>
+            <div class="mb-3">
                 <h6>Time</h6>
-                <input class="form-control" type="time" name="pelaksanaan" required>
+                <input class="form-control" type="time" name="waktu" required>
             </div>
             <div class="mb-3">
                 <h6>Group Link</h6>

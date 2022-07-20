@@ -20,8 +20,10 @@
                     <th scope="col">#</th>
                     <th scope="col">Judul</th>
                     <th scope="col">Pemateri</th>
-                    <th scope="col">Open</th>
-                    <th scope="col">Close</th>
+                    <th scope="col">Open Registration</th>
+                    <th scope="col">Close Registration</th>
+                    <th scope="col">Event Held</th>
+                    <th scope="col">Time</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -34,6 +36,8 @@
                         <td>{{ $ta->pemateri }}</td>
                         <td>{{ $ta->open }}</td>
                         <td>{{ $ta->close }}</td>
+                        <td>{{ $ta->pelaksanaan }}</td>
+                        <td>{{ $ta->waktu }}</td>
                         <td>{{ ($ta->terlihat == 1)? 'active' : 'hidden' }}</td>
                         <td>
                             <a href="/dashboard/tabligh-akbar/{{ $ta->id }}" class="badge bg-info">
