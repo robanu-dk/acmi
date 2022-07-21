@@ -15,7 +15,7 @@
                         $registered = false;
                         $subCom = null;
                         foreach ($subCompetitions as $subCompetition) {
-                            if($subCompetition->competition_id == $competition->id) {
+                            if($subCompetition->competition_id == $competition->id && $participants!=null) {
                                 $subCom_id = $subCompetition->id;
                                 foreach ($participants as $participant) {
                                     if($participant->sub_competition_id == $subCom_id) {
