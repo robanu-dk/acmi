@@ -17,12 +17,15 @@
               <p class="card-text">{{ $ta->close }}</p>
               @php
                   $regist = false;
-                  foreach($participantTa as $pta)
+                  if($participantTa != null)
                   {
-                    if($pta->tabligh_akbar_id == $ta->id)
+                    foreach($participantTa as $pta)
                     {
-                        $regist = true;
-                        break;
+                        if($pta->tabligh_akbar_id == $ta->id)
+                        {
+                            $regist = true;
+                            break;
+                        }
                     }
                   }
               @endphp
