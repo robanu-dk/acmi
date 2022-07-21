@@ -35,6 +35,7 @@
       </div>
       @else
       <div class="text-center mt-5">There is no event right now!!</div>
+      @break
       @endif
       @endforeach
 
