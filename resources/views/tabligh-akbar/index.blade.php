@@ -6,8 +6,16 @@
     <h1 class="border-bottom" style="text-align: center; font-family: 'Inter', sans-serif;font-weight: 600; font-size:40px; color: #313131 ; padding-bottom:10px;">Join the Event!</h1>
 
     <div class="row" style="width:100%; margin:auto">
+        @php
+            $ada = false;
+        @endphp
       @foreach($tablighAkbars as $ta)
       @if($ta->terlihat == 1 && $ta->open <= date('Y-m-d') && $ta->close >= date('Y-m-d'))
+
+        @php
+            $ada = true;
+        @endphp
+
       <div class="col-md-4 mb-5" >
         <div class="card" style="width: 18rem;">
             <img src="{{ asset('storage/'. $ta->foto) }}" class="card-img-top" alt="" height="200" width="300">
@@ -33,11 +41,12 @@
             </div>
         </div>
       </div>
-      @else
-      <div class="text-center mt-5">There is no event right now!!</div>
-      @break
       @endif
       @endforeach
+
+      @if(!$ada)
+      <div class="text-center mt-5">There is no event right now!!</div>
+      @endif
 
     </div>
 
