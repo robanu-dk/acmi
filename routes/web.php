@@ -40,10 +40,18 @@ Route::get('/', function () {
 /*menampilkan competition pada home*/
 
 Route::get('/competition', function () {
+    if(auth()->user())
+    {
+        $participants = Participant::where('user_id',auth()->user()->id)->get();
+    }
+    else
+    {
+        $participants = null;
+    }
     return view('competition.index', [
         "judul" => "Competition | ACMI 2022",
         'competitions' => Competition::where('visibility',true)->get(),
-        'participants' => Participant::where('user_id',auth()->user()->id)->get(),
+        'participants' => $participants,
         'subCompetitions' => SubCompetition::all()
     ]);
 });
